@@ -1,16 +1,14 @@
-// function to make color
-function makeColor(color) {
-	document.body.style.backgroundColor = color;
+// function to change color
+function changeColorHover(event) {
+	// create the first color variable based on the window width and event.pageX
+	const firstColor = (event.pageX * 255) / window.innerWidth;
+	// create the second color variable based on the window height and event.pageY
+	const secondColor = (event.pageY * 255) / window.innerHeight;
+	// using the numbers from first color and second color to get rgb colors and store it in a variable
+	const colorCombination = `rgb(${firstColor},0,${secondColor})`;
+	// Set the background color of the body to the colors combination variable
+	document.body.style.backgroundColor = colorCombination;
 }
 
-const redBtn = document.querySelector("#orangered");
-// Added the first event listener to the button
-redBtn.addEventListener("click", function () {
-	makeColor("orangered");
-});
-
-// Added the second event listener to the button
-const h1 = document.querySelector("h1");
-redBtn.addEventListener("click", function () {
-	h1.style.color = "yellow";
-});
+// call add event listener on the document object, to listen to the mousemove event and change colors
+document.addEventListener("mousemove", changeColorHover);
